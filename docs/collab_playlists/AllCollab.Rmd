@@ -1,0 +1,83 @@
+---
+title: "spotifyAPIrabbithole"
+author: "Christopher"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    toc: yes
+    toc_depth: 2
+    highlight: textmate
+    theme: yeti
+    fig_height: 7
+    keep_md: yes
+---
+
+```{r set opts, include = F}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+```{r setup, warnings=FALSE, comment=F}
+
+library(reactable)
+library(spotifyr, quietly = TRUE)
+library(tidyverse, quietly = TRUE)
+library(magrittr, quietly = TRUE)
+library(sjmisc, quietly = TRUE)
+library(corrr, quietly = TRUE)
+library(knitr, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(googlesheets4)
+
+```
+
+# analysis of collab playlists data
+
+```{r data, message=FALSE, warning=FALSE}
+read.csv("fullthing.csv") -> collab_table 
+
+```
+
+## Here are the basics
+
+```{r basictable}
+
+##cleaning it up
+
+reactable(collab_table[1:4],compact = TRUE, showPageSizeOptions = TRUE, pageSizeOptions = c(25, 100, 250, 500, 888), resizable = TRUE, filterable = TRUE,searchable = TRUE, showSortIcon = TRUE)
+
+## cleaning it up end
+```
+
+## expandable by user ID -- I'll add your name once I decode these spotify things.
+
+```{r groupingit}
+
+##cleaning it up
+
+reactable(collab_table[1:18],compact = TRUE, showPageSizeOptions = TRUE, pageSizeOptions = c(25, 100, 250, 500, 888), resizable = TRUE, filterable = TRUE,searchable = TRUE, showSortIcon = TRUE, groupBy = "added_by_id")
+
+## cleaning it up end
+```
+
+##Here's the raw full table.
+
+```{r rawfull}
+
+##cleaning it up
+
+reactable(collab_table[1:18],compact = TRUE, showPageSizeOptions = TRUE, pageSizeOptions = c(25, 100, 250, 500, 888), resizable = TRUE, filterable = TRUE,searchable = TRUE, showSortIcon = TRUE, selection = "multiple")
+
+## cleaning it up end
+```
+
+
+
+## Code Appendix
+
+------------------------------------------------------------------------
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+
+```
+
+------------------------------------------------------------------------
