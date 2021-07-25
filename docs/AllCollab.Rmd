@@ -40,7 +40,6 @@ read.csv("fullthing.csv") -> collab_table
 ## Here are the basics
 
 ```{r basictable}
-
 ##cleaning it up
 
 reactable(collab_table[1:4],compact = TRUE, showPageSizeOptions = TRUE, pageSizeOptions = c(25, 100, 250, 500, 888), resizable = TRUE, filterable = TRUE,searchable = TRUE, showSortIcon = TRUE)
@@ -69,6 +68,8 @@ reactable(collab_table[1:18],compact = TRUE, showPageSizeOptions = TRUE, pageSiz
 
 ## cleaning it up end
 ```
+
+### When I have time, I'll do some visualizaiton stuff.
 
 
 
